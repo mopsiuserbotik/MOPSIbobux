@@ -1322,10 +1322,10 @@ Home:CreateParagraph({Title = "Кодером скрипта является @F
 Home:CreateSection("Следите за обновлениями!")
 
 Home:CreateButton({
-    Name = "Telegram: t.me/faust_cheats",
+    Name = "Telegram: t.me/mopsi_script",
     Callback = function()
         if setclipboard then
-            setclipboard("https://t.me/faust_cheats")
+            setclipboard("https://t.me/mopsi_script")
             SendCheck("Успех", "Ссылка на Telegram скопирована в буфер обмена!")
         else
             SendError("Ошибка", "Ваш исполнитель не поддерживает копирование в буфер обмена")
