@@ -64,7 +64,6 @@ getgenv().Settings = {
 	TwerkAss = false,
 	TwerkAss2 = false,
 	Annoy = false,
-	CopyMovement = false,
 	PlayAlways = false,
 	Platform = false,
 	FlySpeed = 50,
@@ -1290,29 +1289,6 @@ game.TextChatService.OnIncomingMessage = function(message)
 end
 
 
-if game.TextChatService:FindFirstChild("TextChannels") and not getgenv().AlreadyLoaded then
-	game.TextChatService.TextChannels.RBXGeneral.MessageReceived:Connect(function(message)
-		local textSource = tostring(message.TextSource)
-		local text = tostring(message.Text)
-		if Settings.Player and textSource == Settings.Player.Name and Settings.CopyMovement then
-			game.TextChatService.TextChannels.RBXGeneral:SendAsync(text)
-		end
-	end)
-end
-
-
-
-
-if game.ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents") and not getgenv().AlreadyLoaded then
-	local event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents
-	event.OnMessageDoneFiltering.OnClientEvent:Connect(function(object)
-		local textSource = object.FromSpeaker
-		local text = object.Message or ""
-		if Settings.Player and textSource == Settings.Player.Name and Settings.CopyMovement then
-			game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
-		end
-	end)
-end
 
 
 
@@ -3743,114 +3719,6 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Debris = game:GetService("Debris")
 
-local lastTargetCFrame = nil
-local animConnections = {}
-local activeTracks = {}
-local copyMovementConnection = nil
-
-local function stopAllCopiedTracks()
-    for _, track in ipairs(activeTracks) do
-        if track and track.IsPlaying then
-            track:Stop(0)
-        end
-    end
-    activeTracks = {}
-
-    local character = LP.Character
-    if character then
-        local humanoid = character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            local currentState = humanoid:GetState()
-            humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-            task.wait()
-            humanoid:ChangeState(currentState)
-        end
-    end
-end
-
-local function stopCopying()
-    if copyMovementConnection then
-        copyMovementConnection:Disconnect()
-        copyMovementConnection = nil
-    end
-    for _, c in ipairs(animConnections) do
-        c:Disconnect()
-    end
-    animConnections = {}
-    stopAllCopiedTracks()
-end
-
-local function copyMovement(target)
-    stopCopying()
-
-    local character = LP.Character
-    local targetChar = target.Character
-    if not character or not targetChar then return end
-
-    local hrp = character:FindFirstChild("HumanoidRootPart")
-    local targetHrp = targetChar:FindFirstChild("HumanoidRootPart")
-    if not hrp or not targetHrp then return end
-
-    lastTargetCFrame = targetHrp.CFrame
-
-    copyMovementConnection = RunService.Heartbeat:Connect(function()
-        if not Settings.CopyMovement then
-            stopCopying()
-            return
-        end
-
-        local char = LP.Character
-        local tChar = target.Character
-        if not char or not tChar then return end
-
-        local root = char:FindFirstChild("HumanoidRootPart")
-        local tRoot = tChar:FindFirstChild("HumanoidRootPart")
-        if not root or not tRoot then return end
-
-        local currentTargetCFrame = tRoot.CFrame
-        local delta = lastTargetCFrame:ToObjectSpace(currentTargetCFrame)
-        root.CFrame = root.CFrame * delta
-        lastTargetCFrame = currentTargetCFrame
-    end)
-
-    -- Копирование анимаций
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-    local targetHumanoid = targetChar:FindFirstChildOfClass("Humanoid")
-    if humanoid and targetHumanoid then
-        local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-        local targetAnimator = targetHumanoid:FindFirstChildOfClass("Animator")
-
-        if targetAnimator then
-            local playing = {}
-            local conn = targetAnimator.AnimationPlayed:Connect(function(targetTrack)
-                if not Settings.CopyMovement then return end
-                local animId = targetTrack.Animation.AnimationId
-                if playing[animId] and playing[animId].IsPlaying then return end
-
-                local anim = Instance.new("Animation")
-                anim.AnimationId = animId
-
-                local ok, myTrack = pcall(function()
-                    return animator:LoadAnimation(anim)
-                end)
-
-                if ok then
-                    myTrack:Play()
-                    myTrack:AdjustSpeed(targetTrack.Speed)
-                    playing[animId] = myTrack
-                    table.insert(activeTracks, myTrack)
-
-                    targetTrack.Stopped:Connect(function()
-                        if Settings.CopyMovement and myTrack.IsPlaying then
-                            myTrack:Stop()
-                        end
-                    end)
-                end
-            end)
-            table.insert(animConnections, conn)
-        end
-    end
-end
 
 
 
