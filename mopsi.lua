@@ -1506,7 +1506,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				game:GetService("Lighting"):FindFirstChild("niggaAnnoy"):Destroy()
 				RefreshAnims()
 			end
-			while Settings.Annoy do task.wait()
+			while Settings.Annoy do task.wait(0.001)
 				if game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and Settings.Player and Settings.Player.Character and Settings.Player.Character:FindFirstChild("HumanoidRootPart") then
 					game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = Settings.Player.Character.HumanoidRootPart.CFrame
 				end
@@ -1545,7 +1545,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 
 	Trolling:CreateToggle({Name = "Следовать",CurrentValue = false,Callback = function(t)
 		LoopGoTo = t
-		while LoopGoTo == true do task.wait()
+		while LoopGoTo == true do task.wait(0.001)
 			if Settings.Player and Settings.Player.Character and game.Players.LocalPlayer.Character and Settings.Player.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Settings.Player.Character.HumanoidRootPart.CFrame
 			end
@@ -1578,7 +1578,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
         Settings.Orbit = t
         local angle = 0
         while Settings.Orbit do
-            task.wait()
+            task.wait(0.001)
             if Settings.Player and Settings.Player.Character and Settings.Player.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
                 angle = angle + (Settings.OrbitSpeed / 100)
                 local offset = Vector3.new(math.cos(angle) * Settings.OrbitRadius, 0, math.sin(angle) * Settings.OrbitRadius)
@@ -1632,7 +1632,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1688,7 +1688,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1742,7 +1742,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1795,7 +1795,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 			pcall(function()
 				if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 					game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1852,7 +1852,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1907,7 +1907,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -1966,7 +1966,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2021,7 +2021,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2078,7 +2078,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2135,7 +2135,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2192,7 +2192,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2252,7 +2252,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2309,7 +2309,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2365,7 +2365,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2421,7 +2421,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2477,7 +2477,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2531,7 +2531,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2588,7 +2588,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait(0.01)
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
@@ -2644,7 +2644,7 @@ if game:GetService("Players").LocalPlayer.Character and game:GetService("Players
 				RefreshAnims()
 				Settings.PlayAlways = false
 			end
-			while Settings.RapePlayer do task.wait()
+			while Settings.RapePlayer do task.wait(0.001)
 				pcall(function()
 					if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit = false
