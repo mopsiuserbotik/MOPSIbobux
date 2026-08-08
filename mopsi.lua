@@ -4654,30 +4654,7 @@ end})
 
 
 
-local SaveAnimDropdown = Misc:CreateDropdown({
-    Name = "Сохранить файл анимаций (Игрок)",
-    Options = GetPlayerList(),
-    CurrentOption = {""},
-    MultipleOptions = false,
-    Callback = function(s_table)
-        local s = s_table[1]
-        local targetPlayer = getPlayerFromSelection(s)
-        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("Animate") then
-            local Animate = targetPlayer.Character.Animate
-            local RandomID = math.random(9e9, 8e8)
-            writefile(targetPlayer.Name.."_Animations_"..RandomID..".lua", "local Players = game:GetService('Players')".."\n".."local Animate = Players['"..targetPlayer.Name.."'].Character.Animate".."\n".."Animate.idle.Animation1.AnimationId = ".."'"..Animate.idle.Animation1.AnimationId.."'".."\n".."Animate.idle.Animation2.AnimationId = ".."'"..Animate.idle.Animation2.AnimationId.."'".."\n".."Animate.run:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.run:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.walk:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.walk:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.jump:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.jump:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.climb:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.climb:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.fall:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.fall:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.swim:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.swim:FindFirstChildOfClass('Animation').AnimationId.."'".."\n".."Animate.swimidle:FindFirstChildOfClass('Animation').AnimationId = ".."'"..Animate.swimidle:FindFirstChildOfClass('Animation').AnimationId.."'")
-            SendCheck("Анимации " .. targetPlayer.Name .. " @" .. targetPlayer.DisplayName, "сохранены в папку workspace!")
-        end
-    end
-})
-table.insert(allPlayerDropdowns, SaveAnimDropdown)
 
-Misc:CreateButton({
-    Name = "Обновить список игроков (Сохр)",
-    Callback = function()
-        SaveAnimDropdown:Refresh(GetPlayerList(), true)
-    end
-})
 
 local selectedScriptPath = ""
 local foundScripts = {}
